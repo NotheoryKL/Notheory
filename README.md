@@ -1,2 +1,2 @@
-# hello-world
-for test
+# Notheory's code
+Start!
