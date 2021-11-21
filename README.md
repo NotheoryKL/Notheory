@@ -1,2 +1,2 @@
 # Notheory's code
-Les's Start!
+Let's Start!
