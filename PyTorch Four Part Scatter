@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt #偉哉我畫圖神器
+import numpy as np
+import torch
+from torch.autograd import Variable
+import torch.nn.functional as F
+
+n1_data = torch.ones(100, 2) #100*1 matrix 調整為n1專給x向量使用
+n2_data = torch.ones(100, 2) #多設一個n2以便好控制y向量做調整
+
+x0 = torch.normal(2*n1_data, 1) #normal(?,?) = set random's mean value/set the deviation(集散度)
+y0 = torch.zeros(100)
+z0 = torch.normal(2*n2_data, 1)
+x1 = torch.normal(-2*n1_data, 1)
+y1 = torch.ones(100)
+z1 = torch.normal(-2*n2_data, 1)
+x2 = torch.normal(2*n1_data, 1)
+y2 = torch.tensor([2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2])
+z2 = torch.normal(-2*n2_data, 1)
+x3 = torch.normal(-2*n1_data, 1)
+y3 = torch.tensor([3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3])
+z3 = torch.normal(2*n2_data, 1)
+
+x = torch.cat((x0, x1, x2, x3), 0).type(torch.FloatTensor) #cat()就是concatenated做串接資料用
+y = torch.cat((y0, y1, y2, y3), 0).type(torch.LongTensor)
+z = torch.cat((z0, z1, z2, z3), 0).type(torch.FloatTensor)
+
+x, y = Variable(x), Variable(y)
+
+#x[:,0]就是取所有行第0個數據
+#可以發現這裡的y純做顏色控制用罷了並非真y向量值
+#scatter() =(x, y, color, point's_size, linewidth, colormap) 
+plt.scatter(x.data.numpy()[:, 0], z.data.numpy()[:, 0],  c=y.data.numpy(), s=100, lw=0, cmap='RdYlGn')
+plt.show()
