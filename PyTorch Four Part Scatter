@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt #偉哉我畫圖神器
+import matplotlib.pyplot as plt 
 import numpy as np
 import torch
 from torch.autograd import Variable
