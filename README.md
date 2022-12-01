@@ -1,2 +1,2 @@
 # Notheory's code
-Let's Start!
+這人很懶還沒留下什麼有用的
